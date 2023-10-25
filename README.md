@@ -1,33 +1,36 @@
-# ip4y (ip4y)
+# IP4Y
 
-A Quasar Project
+Teste_Ip4y/Front-end
 
-## Install the dependencies
+## Configuração
+
+1. Clone o repositório.
+
 ```bash
-yarn
-# or
+git clone https://github.com/DevVeniltonJunior/Teste_IP4Y_backend.git
+cd Teste_IP4Y_backend
+```
+
+2. Instale as dependências.
+
+```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+3. Inicie o servidor de desenvolvimento.
+
 ```bash
 quasar dev
 ```
 
+## Uso
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+Funcionalidades:
 
+  - Criar Usuário
+  - Atualizar Usuário
+  - Deletar Usuário
 
+## Contribuindo
 
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Sinta-se à vontade para contribuir para o projeto. Basta criar um fork e enviar um pull request.
