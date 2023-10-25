@@ -93,25 +93,28 @@
 
     </q-form>
 
+      <q-banner v-if="msg !== ''" class="bg-positive text-black">
+        {{msg}}
+      </q-banner>
+
   </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { useQuasar } from 'quasar'
+import { Data } from './data'
 
 export default defineComponent({
   name: 'UserForm',
   setup () {
-    const $q = useQuasar()
-
-    const cpf = ref(null)
-    const firstName = ref(null)
-    const lastName = ref(null)
-    const birthdate = ref(null)
-    const email = ref(null)
-    const gender = ref(null)
+    const cpf = ref('')
+    const firstName = ref('')
+    const lastName = ref('')
+    const birthdate = ref('')
+    const email = ref('')
+    const gender = ref('')
+    const msg = ref<string>('')
 
     return {
       cpf,
@@ -120,24 +123,39 @@ export default defineComponent({
       birthdate,
       email,
       gender,
-      options: ['Masculino', 'Feminino', 'Transexual', 'Cisgênero', 'Gênero fluído', 'Gênero fluido', 'Não-binário', 'Agênero', 'Dois-espíritos', 'Andrógino', 'Bígênero', 'Demigênero', 'Gênero não conforming', 'Neutrois', 'Pangênero', 'Terceiro gênero'],
+      msg,
+      options: ['Masculino', 'Feminino', 'Transexual', 'Cisgênero', 'Gênero fluído', 'Não-binário', 'Agênero', 'Dois-espíritos', 'Andrógino', 'Bígênero', 'Demigênero', 'Gênero não conforming', 'Neutrois', 'Pangênero', 'Terceiro gênero'],
 
       onSubmit () {
-        $q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Submitted'
-        })
-      },
+        if (cpf.value.length <= 0 || firstName.value.length <= 0 || lastName.value.length <= 0 || birthdate.value.length <= 0 || email.value.length <= 0 || gender.value.length <= 0) {
+          alert('Por favor, preencha todos os campos')
+        }
 
+        const entity = {
+          id: 1,
+          cpf: cpf.value,
+          first_name: firstName.value,
+          last_name: lastName.value,
+          birthdate: birthdate.value,
+          email: email.value,
+          gender: gender.value
+        }
+
+        Data.create(entity)
+
+        msg.value = 'Inserido com sucesso'
+        setTimeout(() => {
+          msg.value = ''
+          return msg
+        }, 2000)
+      },
       onReset () {
-        cpf.value = null
-        firstName.value = null
-        lastName.value = null
-        birthdate.value = null
-        email.value = null
-        gender.value = null
+        cpf.value = ''
+        firstName.value = ''
+        lastName.value = ''
+        birthdate.value = ''
+        email.value = ''
+        gender.value = ''
       }
     }
   }
