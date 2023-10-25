@@ -7,8 +7,8 @@ Teste_Ip4y/Front-end
 1. Clone o repositório.
 
 ```bash
-git clone https://github.com/DevVeniltonJunior/Teste_IP4Y_backend.git
-cd Teste_IP4Y_backend
+git clone https://github.com/DevVeniltonJunior/Teste_IP4Y_frontend.git
+cd Teste_IP4Y_frontend
 ```
 
 2. Instale as dependências.
